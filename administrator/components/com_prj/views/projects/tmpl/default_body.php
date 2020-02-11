@@ -18,6 +18,9 @@ foreach ($this->items['items'] as $i => $item) :
             <?php echo $item['manager'];?>
         </td>
         <td>
+            <?php echo $item['status'];?>
+        </td>
+        <td>
             <?php echo $item['date_start'];?>
         </td>
         <td>

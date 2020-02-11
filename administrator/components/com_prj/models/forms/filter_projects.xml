@@ -25,6 +25,8 @@
             <option value="p.title DESC">COM_PRJ_SORTING_PROJECTS_TITLE_DESC</option>
             <option value="manager ASC">COM_PRJ_SORTING_PROJECTS_MANAGER_ASC</option>
             <option value="manager DESC">COM_PRJ_SORTING_PROJECTS_MANAGER_DESC</option>
+            <option value="status ASC">COM_PRJ_SORTING_PROJECTS_STATUS_ASC</option>
+            <option value="status DESC">COM_PRJ_SORTING_PROJECTS_STATUS_DESC</option>
             <option value="p.date_start ASC">COM_PRJ_SORTING_PROJECTS_DATE_START_ASC</option>
             <option value="p.date_start DESC">COM_PRJ_SORTING_PROJECTS_DATE_START_DESC</option>
             <option value="p.date_end ASC">COM_PRJ_SORTING_PROJECTS_DATE_END_ASC</option>

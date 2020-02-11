@@ -17,6 +17,9 @@ $listDirn    = $this->escape($this->state->get('list.direction'));
         <?php echo JHtml::_('searchtools.sort', 'COM_PRJ_HEAD_PROJECTS_MANAGER', 'manager', $listDirn, $listOrder); ?>
     </th>
     <th>
+        <?php echo JHtml::_('searchtools.sort', 'COM_PRJ_HEAD_PROJECTS_STATUS', 'status', $listDirn, $listOrder); ?>
+    </th>
+    <th>
         <?php echo JHtml::_('searchtools.sort', 'COM_PRJ_HEAD_PROJECTS_DATE_START', 'p.date_start', $listDirn, $listOrder); ?>
     </th>
     <th>
