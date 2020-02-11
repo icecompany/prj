@@ -40,7 +40,7 @@ create table `#__mkv_projects_thematics` (
                                                 projectID smallint unsigned not null,
                                                 thematicID smallint unsigned not null,
                                                 constraint `#__mkv_projects_thematics_#__mkv_projects_fk` foreign key (projectID) references `#__mkv_projects` (id) on delete cascade on update cascade,
-                                                constraint `#__mkv_projects_thematics_#__mkv_thematics_fk` foreign key (thematicID) references `#__mkv_thematics` (id) on delete restrict on update cascade
+                                                constraint `#__mkv_projects_thematics_#__mkv_thematics_fk` foreign key (thematicID) references `#__mkv_thematics` (id) on delete cascade on update cascade
 )
     character set utf8
     collate utf8_general_ci comment 'Привязки проектов к тематическим рубрикам';
