@@ -61,8 +61,10 @@ class PrjModelProjects extends ListModel
             $arr['id'] = $item->id;
             $arr['title'] = $item->title;
             $arr['managerID'] = $item->managerID;
-            $arr['date_start'] = $item->date_start;
-            $arr['date_end'] = $item->date_end;
+            $ds = JDate::getInstance($item->date_start);
+            $de = JDate::getInstance($item->date_end);
+            $arr['date_start'] = $ds->format("d.m.Y");
+            $arr['date_end'] = $de->format("d.m.Y");
             $arr['manager'] = $item->manager;
             $result['items'][] = $this->prepare($arr);
         }
