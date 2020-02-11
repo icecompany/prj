@@ -39,6 +39,13 @@
                 filter="unset"
         />
         <field
+                name="groupID"
+                type="usergroup"
+                label="COM_PRJ_FORM_PROJECT_GROUP_LABEL"
+                description="COM_PRJ_FORM_PROJECT_GROUP_DESC"
+                class="span12"
+        />
+        <field
                 name="date_start"
                 type="calendar"
                 label="COM_PRJ_FORM_PROJECT_DATE_START_LABEL"

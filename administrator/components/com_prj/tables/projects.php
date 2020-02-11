@@ -9,6 +9,7 @@ class TablePrjProjects extends Table
     var $title = null;
     var $title_en = null;
     var $managerID = null;
+    var $groupID = null;
     var $date_start = null;
     var $date_end = null;
     var $prefix = null;
