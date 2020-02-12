@@ -21,6 +21,9 @@ foreach ($this->items['items'] as $i => $item) :
             <?php echo $item['for_ndp'];?>
         </td>
         <td>
+            <?php echo $item['weight'];?>
+        </td>
+        <td>
             <?php echo $item['id'];?>
         </td>
     </tr>

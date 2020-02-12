@@ -13,6 +13,7 @@ class PrjModelThematics extends ListModel
                 't.title',
                 't.for_contractor', 'for_contractor',
                 't.for_ndp', 'for_ndp',
+                't.weight',
                 'search',
             );
         }
@@ -32,7 +33,7 @@ class PrjModelThematics extends ListModel
         $orderDirn = $this->state->get('list.direction');
 
         $query
-            ->select("t.id, t.title, t.for_contractor, t.for_ndp")
+            ->select("t.id, t.title, t.for_contractor, t.for_ndp, t.weight")
             ->from("#__mkv_thematics t");
 
         /* Поиск */
@@ -74,6 +75,7 @@ class PrjModelThematics extends ListModel
             $arr['title'] = $item->title;
             $arr['for_contractor'] = JText::sprintf((!$item->for_contractor) ? 'JNO' : 'JYES');
             $arr['for_ndp'] = JText::sprintf((!$item->for_ndp) ? 'JNO' : 'JYES');
+            $arr['weight'] = $item->weight;
             $result['items'][] = $this->prepare($arr);
         }
         return $result;
@@ -93,7 +95,7 @@ class PrjModelThematics extends ListModel
     }
 
     /* Сортировка по умолчанию */
-    protected function populateState($ordering = 't.title', $direction = 'asc')
+    protected function populateState($ordering = 't.weight', $direction = 'asc')
     {
         $search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
         $this->setState('filter.search', $search);
