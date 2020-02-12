@@ -20,6 +20,6 @@ $listDirn    = $this->escape($this->state->get('list.direction'));
         <?php echo JHtml::_('searchtools.sort', 'COM_PRJ_HEAD_THEMATICS_FOR_NDP', 't.for_ndp', $listDirn, $listOrder); ?>
     </th>
     <th>
-        <?php echo JHtml::_('searchtools.sort', 'ID', 'p.id', $listDirn, $listOrder); ?>
+        <?php echo JHtml::_('searchtools.sort', 'ID', 't.id', $listDirn, $listOrder); ?>
     </th>
 </tr>
