@@ -9,10 +9,10 @@ class PrjModelThematics extends ListModel
     {
         if (empty($config['filter_fields'])) {
             $config['filter_fields'] = array(
-                'p.id',
-                'p.title',
-                'p.for_contractor', 'for_contractor',
-                'p.for_ndp', 'for_ndp',
+                't.id',
+                't.title',
+                't.for_contractor', 'for_contractor',
+                't.for_ndp', 'for_ndp',
                 'search',
             );
         }
@@ -93,7 +93,7 @@ class PrjModelThematics extends ListModel
     }
 
     /* Сортировка по умолчанию */
-    protected function populateState($ordering = 'p.title', $direction = 'asc')
+    protected function populateState($ordering = 't.title', $direction = 'asc')
     {
         $search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
         $this->setState('filter.search', $search);
