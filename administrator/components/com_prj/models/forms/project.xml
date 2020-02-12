@@ -14,7 +14,7 @@
                 message="COM_PRJ_FORM_PROJECT_TITLE_MESSAGE"
                 autocomplete="off"
                 required="true"
-                validate="ptitle"
+                validate="project"
                 maxlength="255"
                 class="span12"
         />

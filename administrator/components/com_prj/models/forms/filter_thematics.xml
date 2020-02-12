@@ -49,6 +49,8 @@
             <option value="t.for_contractor DESC">COM_PRJ_SORTING_THEMATICS_FOR_CONTRACTOR_DESC</option>
             <option value="t.for_ndp ASC">COM_PRJ_SORTING_THEMATICS_FOR_NDP_ASC</option>
             <option value="t.for_ndp DESC">COM_PRJ_SORTING_THEMATICS_FOR_NDP_DESC</option>
+            <option value="t.weight ASC">COM_PRJ_SORTING_THEMATICS_WEIGHT_ASC</option>
+            <option value="t.weight DESC">COM_PRJ_SORTING_THEMATICS_WEIGHT_DESC</option>
             <option value="t.id ASC">COM_PRJ_SORTING_THEMATICS_ID_ASC</option>
             <option value="t.id DESC">COM_PRJ_SORTING_THEMATICS_ID_DESC</option>
         </field>
