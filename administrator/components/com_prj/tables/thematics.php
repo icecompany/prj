@@ -9,7 +9,7 @@ class TablePrjThematics extends Table
     var $title = null;
     var $for_contractor = null;
     var $for_ndp = null;
-    var $published = null;
+    var $weight = null;
 	public function __construct(JDatabaseDriver $db)
 	{
 		parent::__construct('#__mkv_thematics', 'id', $db);
