@@ -76,7 +76,21 @@ class PrjModelThematics extends ListModel
             $arr['for_contractor'] = JText::sprintf((!$item->for_contractor) ? 'JNO' : 'JYES');
             $arr['for_ndp'] = JText::sprintf((!$item->for_ndp) ? 'JNO' : 'JYES');
             $arr['weight'] = $item->weight;
-            $result['items'][] = $this->prepare($arr);
+            $result['items'][$item->id] = $this->prepare($arr);
+        }
+        $result = $this->addThematicsProjects($result);
+
+        return $result;
+    }
+
+    private function addThematicsProjects(array $result = array()): array
+    {
+        if (empty($result)) return array();
+        $ids = array_keys($result['items']);
+        $model = ListModel::getInstance('Project_thematics', 'PrjModel', array('thematics' => $ids));
+        $projects = $model->getItems();
+        foreach ($result['items'] as $i => $item) {
+            $result['items'][$i]['projects'] = $projects[$result['items'][$i]['id']];
         }
         return $result;
     }
