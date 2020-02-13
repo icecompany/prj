@@ -68,7 +68,7 @@ class PrjModelThematics extends ListModel
     public function getItems()
     {
         $items = parent::getItems();
-        $result = array('items' => array());
+        $result = array('items' => array(), 'projects' => array(5 => 'Армия-2019', 11 => 'Армия-2020'));
         foreach ($items as $item) {
             $arr = array();
             $arr['id'] = $item->id;
@@ -90,7 +90,9 @@ class PrjModelThematics extends ListModel
         $model = ListModel::getInstance('Project_thematics', 'PrjModel', array('thematics' => $ids));
         $projects = $model->getItems();
         foreach ($result['items'] as $i => $item) {
-            $result['items'][$i]['projects'] = $projects[$result['items'][$i]['id']];
+            foreach ($projects[$result['items'][$i]['id']] as $ii => $projectID) {
+                $result['items'][$i]['projects'][$projectID] = true;
+            }
         }
         return $result;
     }
@@ -126,6 +128,11 @@ class PrjModelThematics extends ListModel
         $id .= ':' . $this->getState('filter.for_contractor');
         $id .= ':' . $this->getState('filter.for_ndp');
         return parent::getStoreId($id);
+    }
+
+    public function getScript()
+    {
+        return 'administrator/components/' . $this->option . '/models/forms/thematics.js';
     }
 
     private $export;

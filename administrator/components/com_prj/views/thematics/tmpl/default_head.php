@@ -13,6 +13,9 @@ $listDirn    = $this->escape($this->state->get('list.direction'));
     <th>
         <?php echo JHtml::_('searchtools.sort', 'COM_PRJ_HEAD_THEMATICS_TITLE', 't.title', $listDirn, $listOrder); ?>
     </th>
+    <?php foreach ($this->items['projects'] as $projectID => $project): ?>
+        <th class="center"><?php echo $project;?></th>
+    <?php endforeach;?>
     <th>
         <?php echo JHtml::_('searchtools.sort', 'COM_PRJ_HEAD_THEMATICS_FOR_CONTRACTOR', 't.for_contractor', $listDirn, $listOrder); ?>
     </th>

@@ -6,7 +6,7 @@ defined('_JEXEC') or die;
 class PrjViewThematics extends HtmlView
 {
     protected $sidebar = '';
-    public $items, $pagination, $uid, $state, $filterForm, $activeFilters;
+    public $items, $pagination, $uid, $state, $filterForm, $activeFilters, $script;
 
     public function display($tpl = null)
     {
@@ -15,6 +15,7 @@ class PrjViewThematics extends HtmlView
         $this->state = $this->get('State');
         $this->filterForm = $this->get('FilterForm');
         $this->activeFilters = $this->get('ActiveFilters');
+        $this->script = $this->get('Script');
 
         // Show the toolbar
         $this->toolbar();

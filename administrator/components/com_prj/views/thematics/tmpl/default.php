@@ -7,7 +7,7 @@ JHtml::_('searchtools.form');
 use Joomla\CMS\HTML\HTMLHelper;
 
 HTMLHelper::_('stylesheet', 'com_prj/style.css', array('version' => 'auto', 'relative' => true));
-HTMLHelper::_('script', 'com_prj/script.js', array('version' => 'auto', 'relative' => true));
+HTMLHelper::_('script', $this->script, array('version' => 'auto'));
 ?>
 <div class="row-fluid">
     <div id="j-sidebar-container" class="span2">

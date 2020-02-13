@@ -14,6 +14,11 @@ foreach ($this->items['items'] as $i => $item) :
         <td>
             <?php echo $item['title'];?>
         </td>
+        <?php foreach ($this->items['projects'] as $projectID => $project): ?>
+            <td class="center">
+                <input type="checkbox" onclick="change_thematic(this);" data-thematic="<?php echo $i;?>" data-project="<?php echo $projectID;?>" value="1" <?php if ($item['projects'][$projectID]) echo 'checked';?>>
+            </td>
+        <?php endforeach;?>
         <td>
             <?php echo $item['for_contractor'];?>
         </td>
