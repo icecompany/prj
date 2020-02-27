@@ -21,6 +21,7 @@ class PrjModelProjects extends ListModel
         parent::__construct($config);
         $input = JFactory::getApplication()->input;
         $this->export = ($input->getString('format', 'html') === 'html') ? false : true;
+        $this->for_thematics = ($config['for_thematics'] !== true) ? false : true;
     }
 
     protected function _getListQuery()
@@ -32,6 +33,8 @@ class PrjModelProjects extends ListModel
         /* Сортировка */
         $orderCol = $this->state->get('list.ordering');
         $orderDirn = $this->state->get('list.direction');
+        //Ограничение длины списка
+        $limit = (!$this->export) ? $this->getState('list.limit') : 0;
 
         $query
             ->select("p.id, p.title, p.date_start, p.date_end")
@@ -39,17 +42,21 @@ class PrjModelProjects extends ListModel
             ->select("u.name as manager")
             ->from("#__mkv_projects p")
             ->leftJoin("#__users u on u.id = p.managerID");
-        /* Поиск */
-        $search = $this->getState('filter.search');
 
-        if (!empty($search)) {
-            $text = $db->q("%{$search}%");
-            $query->where("(p.title like {$text} or p.title_en like {$text})");
+        if ($this->for_thematics) {
+            $query->where("p.show_in_thematics = 1");
+            $limit = 0;
         }
-        //Ограничение длины списка
-        $limit = (!$this->export) ? $this->getState('list.limit') : 0;
-        $this->setState('list.limit', $limit);
+        else {
+            /* Поиск */
+            $search = $this->getState('filter.search');
+            if (!empty($search)) {
+                $text = $db->q("%{$search}%");
+                $query->where("(p.title like {$text} or p.title_en like {$text})");
+            }
+        }
 
+        $this->setState('list.limit', $limit);
         $query->order($db->escape($orderCol . ' ' . $orderDirn));
 
         return $query;
@@ -58,19 +65,25 @@ class PrjModelProjects extends ListModel
     public function getItems()
     {
         $items = parent::getItems();
-        $result = array('items' => array());
+        $result = array();
         foreach ($items as $item) {
-            $arr = array();
-            $arr['id'] = $item->id;
-            $arr['title'] = $item->title;
-            $arr['managerID'] = $item->managerID;
-            $arr['status'] = JText::sprintf("COM_PRJ_TEXT_PROJECT_STATUS_{$item->status}");
-            $ds = JDate::getInstance($item->date_start);
-            $de = JDate::getInstance($item->date_end);
-            $arr['date_start'] = $ds->format("d.m.Y");
-            $arr['date_end'] = $de->format("d.m.Y");
-            $arr['manager'] = $item->manager;
-            $result['items'][] = $this->prepare($arr);
+            if (!$this->for_thematics) {
+                if (!isset($result['items'])) $result['items'] = array();
+                $arr = array();
+                $arr['id'] = $item->id;
+                $arr['title'] = $item->title;
+                $arr['managerID'] = $item->managerID;
+                $arr['status'] = JText::sprintf("COM_PRJ_TEXT_PROJECT_STATUS_{$item->status}");
+                $ds = JDate::getInstance($item->date_start);
+                $de = JDate::getInstance($item->date_end);
+                $arr['date_start'] = $ds->format("d.m.Y");
+                $arr['date_end'] = $de->format("d.m.Y");
+                $arr['manager'] = $item->manager;
+                $result['items'][] = $this->prepare($arr);
+            }
+            else {
+                $result[$item->id] = $item->title;
+            }
         }
         return $result;
     }
@@ -104,5 +117,5 @@ class PrjModelProjects extends ListModel
         return parent::getStoreId($id);
     }
 
-    private $export;
+    private $export, $for_thematics;
 }

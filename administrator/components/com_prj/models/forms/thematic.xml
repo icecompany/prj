@@ -26,7 +26,7 @@
                 label="COM_PRJ_FORM_THEMATIC_FOR_CONTRACTOR_LABEL"
                 description="COM_PRJ_FORM_THEMATIC_FOR_CONTRACTOR_DESC"
                 required="true"
-                filter="bool"
+                filter="integer"
         >
             <option value="0">JNO</option>
             <option value="1">JYES</option>
@@ -39,7 +39,7 @@
                 label="COM_PRJ_FORM_THEMATIC_FOR_NDP_LABEL"
                 description="COM_PRJ_FORM_THEMATIC_FOR_NDP_DESC"
                 required="true"
-                filter="bool"
+                filter="integer"
         >
             <option value="0">JNO</option>
             <option value="1">JYES</option>

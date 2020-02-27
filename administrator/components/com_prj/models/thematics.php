@@ -68,7 +68,9 @@ class PrjModelThematics extends ListModel
     public function getItems()
     {
         $items = parent::getItems();
-        $result = array('items' => array(), 'projects' => array(5 => 'Армия-2019', 11 => 'Армия-2020'));
+        $pm = ListModel::getInstance('Projects', 'PrjModel', array('for_thematics' => true));
+        $projects = $pm->getItems();
+        $result = array('items' => array(), 'projects' => $projects);
         foreach ($items as $item) {
             $arr = array();
             $arr['id'] = $item->id;

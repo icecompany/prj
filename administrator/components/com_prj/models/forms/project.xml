@@ -26,7 +26,7 @@
                 hint="COM_PRJ_FORM_PROJECT_TITLE_EN_HINT"
                 message="COM_PRJ_FORM_PROJECT_TITLE_EN_MESSAGE"
                 autocomplete="off"
-                validate="ptitle"
+                validate="project"
                 maxlength="255"
                 class="span12"
         />
@@ -63,8 +63,6 @@
                 filter="none"
                 required="true"
         />
-    </fieldset>
-    <fieldset name="advanced">
         <field
                 name="prefix"
                 type="text"
@@ -75,5 +73,20 @@
                 validate="prefix"
                 maxlength="15"
         />
+    </fieldset>
+    <fieldset name="advanced">
+        <field
+                name="show_in_thematics"
+                type="radio"
+                required="true"
+                label="COM_PRJ_FORM_PROJECT_IN_THEMATICS_LABEL"
+                description="COM_PRJ_FORM_PROJECT_IN_THEMATICS_DESC"
+                filter="integer"
+                class="btn-group btn-group-yesno"
+                default="1"
+                >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
     </fieldset>
 </form>
