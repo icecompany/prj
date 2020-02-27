@@ -48,13 +48,14 @@
 	<!-- Back-end files -->
 	<administration>
 		<!-- Menu entries -->
-		<menu view="prj">COM_PRJ</menu>
+		<menu link="option=com_prj&amp;view=projects">COM_PRJ</menu>
 		<submenu>
 			<!--
 				Note that all & must be escaped to &amp; for the file to be valid
 				XML and be parsed by the installer
 			-->
 			<menu link="option=com_prj&amp;view=projects">COM_PRJ_MENU_PROJECTS</menu>
+			<menu link="option=com_prj&amp;view=thematics">COM_PRJ_MENU_THEMATICS</menu>
 		</submenu>
 
 		<!-- Core files -->

@@ -120,6 +120,7 @@ class PrjModelThematics extends ListModel
         $for_ndp = $this->getUserStateFromRequest($this->context . '.filter.for_ndp', 'filter_for_ndp');
         $this->setState('filter.for_ndp', $for_ndp);
         parent::populateState($ordering, $direction);
+        PrjHelper::check_refresh();
     }
 
     protected function getStoreId($id = '')

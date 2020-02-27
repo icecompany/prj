@@ -12,6 +12,21 @@ class PrjHelper
 	}
 
     /**
+     * Проверяет необходимость перезагрузить страницу. Используется для возврата на предыдущую страницу при отправке формы в админке
+     * @throws Exception
+     * @since 1.0.4
+     */
+    public static function check_refresh(): void
+    {
+        $refresh = JFactory::getApplication()->input->getBool('refresh', false);
+        if ($refresh) {
+            $current = JUri::getInstance(self::getCurrentUrl());
+            $current->delVar('refresh');
+            JFactory::getApplication()->redirect($current);
+        }
+    }
+
+    /**
      * Возвращает параметр ID из реферера
      * @since 1.0.0
      * @return int ID Элемента
@@ -26,11 +41,13 @@ class PrjHelper
      * Возвращает URL для обработки формы
      * @return string
      * @since 1.0.0
+     * @version 1.0.4-patch.1
      * @throws
      */
     public static function getActionUrl(): string
     {
         $uri = JUri::getInstance();
+        $uri->setVar('refresh', '1');
         $query = $uri->getQuery();
         $client = (!JFactory::getApplication()->isClient('administrator')) ? 'site' : 'administrator';
         return JRoute::link($client, "index.php?{$query}");

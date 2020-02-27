@@ -95,6 +95,7 @@ class PrjModelProjects extends ListModel
         $search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
         $this->setState('filter.search', $search);
         parent::populateState($ordering, $direction);
+        PrjHelper::check_refresh();
     }
 
     protected function getStoreId($id = '')
