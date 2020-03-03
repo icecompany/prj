@@ -22,11 +22,11 @@ class PrjModelProjects extends ListModel
         $input = JFactory::getApplication()->input;
         $this->export = ($input->getString('format', 'html') === 'html') ? false : true;
         $this->for_thematics = ($config['for_thematics'] !== true) ? false : true;
+        if ($this->for_thematics) $this->export = true;
     }
 
     protected function _getListQuery()
     {
-
         $db = $this->getDbo();
         $query = $db->getQuery(true);
 
@@ -91,13 +91,9 @@ class PrjModelProjects extends ListModel
     private function prepare(array $item): array
     {
         if (!$this->export) {
-            $managerID = JFactory::getUser()->id;
-            $canDo = (PrjHelper::canDo('core.edit.value') || (!PrjHelper::canDo('core.edit.value') && PrjHelper::canDo('core.edit.own') && $item['managerID'] == $managerID));
-            if ($canDo) {
-                $url = JRoute::_("index.php?option={$this->option}&amp;task=project.edit&amp;id={$item['id']}");
-                $title = $item['title'];
-                $item['title'] = JHtml::link($url, $title);
-            }
+            $url = JRoute::_("index.php?option={$this->option}&amp;task=project.edit&amp;id={$item['id']}");
+            $title = $item['title'];
+            $item['edit_link'] = JHtml::link($url, $title);
         }
         return $item;
     }
@@ -108,7 +104,13 @@ class PrjModelProjects extends ListModel
         $search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
         $this->setState('filter.search', $search);
         parent::populateState($ordering, $direction);
-        PrjHelper::check_refresh();
+
+        $refresh = JFactory::getApplication()->input->getBool('refresh', false);
+        if ($refresh) {
+            $current = JUri::getInstance(self::getCurrentUrl());
+            $current->delVar('refresh');
+            JFactory::getApplication()->redirect($current);
+        }
     }
 
     protected function getStoreId($id = '')
