@@ -22,6 +22,7 @@ class PrjModelProjects extends ListModel
         $input = JFactory::getApplication()->input;
         $this->export = ($input->getString('format', 'html') === 'html') ? false : true;
         $this->for_thematics = ($config['for_thematics'] !== true) ? false : true;
+        if (!empty($config['ids'])) $this->ids = $config['ids'];
         if ($this->for_thematics) $this->export = true;
     }
 
@@ -42,6 +43,10 @@ class PrjModelProjects extends ListModel
             ->select("u.name as manager")
             ->from("#__mkv_projects p")
             ->leftJoin("#__users u on u.id = p.managerID");
+        if (is_array($this->ids)) {
+            $ids = implode(", ", $this->ids);
+            $query->where("p.id in ({$ids})");
+        }
 
         if ($this->for_thematics) {
             $query->where("p.show_in_thematics = 1");
@@ -119,5 +124,5 @@ class PrjModelProjects extends ListModel
         return parent::getStoreId($id);
     }
 
-    private $export, $for_thematics;
+    private $export, $for_thematics, $ids;
 }
