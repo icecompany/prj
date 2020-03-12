@@ -32,7 +32,7 @@
         />
         <field
                 name="managerID"
-                type="user"
+                type="manager"
                 class="span12"
                 label="COM_PRJ_FORM_PROJECT_MANAGER_LABEL"
                 description="COM_PRJ_FORM_PROJECT_MANAGER_DESC"
@@ -72,9 +72,32 @@
                 message="COM_PRJ_FORM_PROJECT_PREFIX_MESSAGE"
                 validate="prefix"
                 maxlength="15"
+                class="span12"
         />
     </fieldset>
     <fieldset name="advanced">
+        <field
+                name="priceID"
+                type="Price"
+                label="COM_PRJ_FORM_PROJECT_PRICE_LABEL"
+                description="COM_PRJ_FORM_PROJECT_PRICE_DESC"
+                required="true"
+                filter="integer"
+                class="span12"
+        />
+        <field
+                name="columnID"
+                type="integer"
+                label="COM_PRJ_FORM_PROJECT_COLUMN_LABEL"
+                description="COM_PRJ_FORM_PROJECT_COLUMN_DESC"
+                first="1"
+                last="3"
+                step="1"
+                class="span12"
+                required="true"
+                filter="integer"
+                default="1"
+        />
         <field
                 name="show_in_thematics"
                 type="radio"
@@ -84,7 +107,7 @@
                 filter="integer"
                 class="btn-group btn-group-yesno"
                 default="1"
-                >
+        >
             <option value="0">JNO</option>
             <option value="1">JYES</option>
         </field>
