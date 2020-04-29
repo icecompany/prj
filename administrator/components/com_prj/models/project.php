@@ -25,6 +25,7 @@ class PrjModelProject extends AdminModel {
             $this->option.'.project', 'project', array('control' => 'jform', 'load_data' => $loadData)
         );
         $form->addFieldPath(JPATH_ADMINISTRATOR."/components/com_prices/models/fields");
+        $form->addFieldPath(JPATH_ADMINISTRATOR."/components/com_stands/models/fields");
 
         if (empty($form))
         {
@@ -49,7 +50,7 @@ class PrjModelProject extends AdminModel {
     {
         $all = get_class_vars($table);
         unset($all['_errors']);
-        $nulls = ['title_en', 'prefix']; //Поля, которые NULL
+        $nulls = ['title_en', 'prefix', 'catalogID']; //Поля, которые NULL
         foreach ($all as $field => $v) {
             if (empty($field)) continue;
             if (in_array($field, $nulls)) {
