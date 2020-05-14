@@ -11,6 +11,33 @@ class PrjHelper
 		HTMLHelper::_('sidebar.addEntry', JText::sprintf('COM_PRJ_MENU_THEMATICS'), 'index.php?option=com_prj&amp;view=thematics', $vName === 'thematics');
 	}
 
+    public function getAvailableProjects()
+    {
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query
+            ->select("`id`, `title`")
+            ->from('#__mkv_projects')
+            ->order("`title`");
+        $result = $db->setQuery($query)->loadObjectList();
+
+        $options = array();
+
+        foreach ($result as $item) {
+            $options[] = JHtml::_('select.option', $item->id, $item->title);
+        }
+
+        return $options;
+	}
+
+    public static function getActiveProject(string $default = '')
+    {
+        $session = JFactory::getSession();
+        $project = $session->get('active_project', '');
+        return ($project != 0) ? $project : $default;
+    }
+    
+
     /**
      * Проверяет необходимость перезагрузить страницу. Используется для возврата на предыдущую страницу при отправке формы в админке
      * @throws Exception
