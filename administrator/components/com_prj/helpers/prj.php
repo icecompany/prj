@@ -11,6 +11,11 @@ class PrjHelper
 		HTMLHelper::_('sidebar.addEntry', JText::sprintf('COM_PRJ_MENU_THEMATICS'), 'index.php?option=com_prj&amp;view=thematics', $vName === 'thematics');
 	}
 
+	public function addActiveProjectFilter()
+    {
+        JHtmlSidebar::addFilter(JText::sprintf("COM_MKV_FILTER_SELECT_ACTIVE_PROJECT"), "set_active_project", JHtml::_("select.options", self::getAvailableProjects(), "value", "text", self::getActiveProject()));
+    }
+
     public function getAvailableProjects()
     {
         $db = JFactory::getDbo();
