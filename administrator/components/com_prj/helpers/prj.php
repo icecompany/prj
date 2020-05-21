@@ -13,7 +13,7 @@ class PrjHelper
 
 	public function addActiveProjectFilter()
     {
-        JHtmlSidebar::addFilter(JText::sprintf("COM_PRJ_FILTER_SELECT_ACTIVE_PROJECT"), "set_active_project", JHtml::_("select.options", self::getAvailableProjects(), "value", "text", self::getActiveProject()));
+        JHtmlSidebar::addFilter(JText::sprintf("COM_MKV_FILTER_SELECT_ACTIVE_PROJECT"), "set_active_project", JHtml::_("select.options", self::getAvailableProjects(), "value", "text", self::getActiveProject()));
     }
 
     public function getAvailableProjects()
