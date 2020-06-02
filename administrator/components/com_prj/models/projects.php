@@ -22,7 +22,10 @@ class PrjModelProjects extends ListModel
         $input = JFactory::getApplication()->input;
         $this->export = ($input->getString('format', 'html') === 'html') ? false : true;
         $this->for_thematics = ($config['for_thematics'] !== true) ? false : true;
-        if (!empty($config['ids'])) $this->ids = $config['ids'];
+        if (!empty($config['ids'])) {
+            $this->ids = $config['ids'];
+            $this->export = true;
+        }
         if ($this->for_thematics) $this->export = true;
     }
 
@@ -46,6 +49,8 @@ class PrjModelProjects extends ListModel
         if (is_array($this->ids)) {
             $ids = implode(", ", $this->ids);
             $query->where("p.id in ({$ids})");
+            $orderCol = 'p.title';
+            $orderDirn = 'ASC';
         }
 
         if ($this->for_thematics) {
