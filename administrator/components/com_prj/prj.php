@@ -24,7 +24,4 @@ require_once JPATH_COMPONENT_ADMINISTRATOR . '/helpers/prj.php';
 // Execute the task
 $controller = BaseController::getInstance('prj');
 $controller->execute(Factory::getApplication()->input->get('task'));
-$db = JFactory::getDbo();
-$db->setQuery("set @TRIGGER_CHECKS=true")->execute();
-
 $controller->redirect();
