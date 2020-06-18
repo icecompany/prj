@@ -35,7 +35,7 @@ class PrjHelper
         return $options;
 	}
 
-    public static function getActiveProject(string $default = '')
+    public static function getActiveProject($default = null)
     {
         $session = JFactory::getSession();
         $project = $session->get('active_project', '');
