@@ -11,6 +11,15 @@ class PrjHelper
 		HTMLHelper::_('sidebar.addEntry', JText::sprintf('COM_PRJ_MENU_THEMATICS'), 'index.php?option=com_prj&amp;view=thematics', $vName === 'thematics');
 	}
 
+    public static function addNotifies()
+    {
+        $cnt = SchedulerHelper::getNotifiesCount();
+        if ($cnt > 0) {
+            $text = "<span style='color: red;'>" . JText::sprintf('COM_PRJ_MENU_NOTIFIES_COUNT', $cnt) . "</span>";
+            HTMLHelper::_('sidebar.addEntry', $text , 'index.php?option=com_scheduler&amp;view=notifies');
+        }
+	}
+
 	public function addActiveProjectFilter()
     {
         JHtmlSidebar::addFilter(JText::sprintf("COM_MKV_FILTER_SELECT_ACTIVE_PROJECT"), "set_active_project", JHtml::_("select.options", self::getAvailableProjects(), "value", "text", self::getActiveProject()));
