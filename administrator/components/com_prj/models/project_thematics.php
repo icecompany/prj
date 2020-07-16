@@ -5,6 +5,8 @@ defined('_JEXEC') or die;
 
 class PrjModelProject_thematics extends ListModel
 {
+    public $thematics;
+
     public function __construct($config = array())
     {
         if (empty($config['filter_fields'])) {
@@ -61,5 +63,5 @@ class PrjModelProject_thematics extends ListModel
         return $result;
     }
 
-    private $export, $thematics;
+    private $export;
 }
