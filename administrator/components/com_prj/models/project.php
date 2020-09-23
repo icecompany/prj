@@ -26,6 +26,7 @@ class PrjModelProject extends AdminModel {
         );
         $form->addFieldPath(JPATH_ADMINISTRATOR."/components/com_prices/models/fields");
         $form->addFieldPath(JPATH_ADMINISTRATOR."/components/com_stands/models/fields");
+        $form->addFieldPath(JPATH_ADMINISTRATOR."/components/com_mkv/models/fields");
 
         if (empty($form))
         {

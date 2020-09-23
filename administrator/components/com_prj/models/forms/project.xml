@@ -32,11 +32,11 @@
         />
         <field
                 name="managerID"
-                type="manager"
+                type="Manager"
                 class="span12"
                 label="COM_PRJ_FORM_PROJECT_MANAGER_LABEL"
                 description="COM_PRJ_FORM_PROJECT_MANAGER_DESC"
-                filter="unset"
+                filter="integer"
         />
         <field
                 name="groupID"
