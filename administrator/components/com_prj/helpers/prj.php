@@ -32,7 +32,7 @@ class PrjHelper
         $query
             ->select("`id`, `title`")
             ->from('#__mkv_projects')
-            ->order("`title`");
+            ->order("date_start desc, `title`");
         $result = $db->setQuery($query)->loadObjectList();
 
         $options = array();
