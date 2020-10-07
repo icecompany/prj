@@ -27,12 +27,14 @@ class PrjHelper
 
     public function getAvailableProjects()
     {
+        $userGroups = implode(', ', JFactory::getUser()->groups);
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query
             ->select("`id`, `title`")
             ->from('#__mkv_projects')
-            ->order("date_start desc, `title`");
+            ->order("date_start desc");
+        if (!empty($userGroups)) $query->where("groupID in ({$userGroups})");
         $result = $db->setQuery($query)->loadObjectList();
 
         $options = array();

@@ -10,7 +10,7 @@ class JFormFieldProject extends JFormFieldList
 
     protected function getOptions()
     {
-        $db =& JFactory::getDbo();
+        $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query
             ->select("`id`, `title`")
