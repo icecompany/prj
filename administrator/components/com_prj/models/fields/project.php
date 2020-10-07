@@ -16,6 +16,8 @@ class JFormFieldProject extends JFormFieldList
             ->select("`id`, `title`")
             ->from('#__mkv_projects')
             ->order("`title`");
+        $userGroups = implode(', ', JFactory::getUser()->groups);
+        if (!empty($userGroups)) $query->where("groupID in ({$userGroups})");
         $result = $db->setQuery($query)->loadObjectList();
 
         $options = array();
