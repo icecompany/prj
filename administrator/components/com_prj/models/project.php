@@ -11,7 +11,41 @@ class PrjModelProject extends AdminModel {
 
     public function save($data)
     {
+        if ($data['id'] === null) {
+            $app = JFactory::getApplication();
+            //Создание прайса для проекта
+            $s1 = $this->createPrice($data['title']);
+            if ($s1 === 0) {
+                $app->enqueueMessage(JText::sprintf('COM_PRJ_ERROR_CREATE_PRICE', JFactory::getDbo()->getErrorMsg()), 'error');
+                return false;
+            }
+            $data['priceID'] = $s1;
+            //Создание прайса для проекта
+            $s2 = $this->createSandCatalog($data['title']);
+            if ($s2 === 0) {
+                $app->enqueueMessage(JText::sprintf('COM_PRJ_ERROR_CREATE_CATALOG', JFactory::getDbo()->getErrorMsg()), 'error');
+                return false;
+            }
+            $data['catalogID'] = $s2;
+        }
+
         return parent::save($data);
+    }
+
+    private function createPrice(string $title): int
+    {
+        JTable::addIncludePath(JPATH_ADMINISTRATOR."/components/com_prices/tables");
+        $arr = ['id' => null, 'title' => JText::sprintf('COM_PRJ_TITLE_NEW_PRICE_NAME', $title)];
+        $table = JTable::getInstance('Prices', 'TablePrices');
+        return (!$table->save($arr)) ? 0 : JFactory::getDbo()->insertid();
+    }
+
+    private function createSandCatalog(string $title): int
+    {
+        JTable::addIncludePath(JPATH_ADMINISTRATOR."/components/com_stands/tables");
+        $arr = ['id' => null, 'title' => JText::sprintf('COM_PRJ_TITLE_NEW_STAND_CATALOG_NAME', $title)];
+        $table = JTable::getInstance('Catalogs', 'TableStands');
+        return (!$table->save($arr)) ? 0 : JFactory::getDbo()->insertid();
     }
 
     public function getTable($name = 'Projects', $prefix = 'TablePrj', $options = array())

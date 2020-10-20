@@ -81,7 +81,6 @@
                 type="Price"
                 label="COM_PRJ_FORM_PROJECT_PRICE_LABEL"
                 description="COM_PRJ_FORM_PROJECT_PRICE_DESC"
-                required="true"
                 filter="integer"
                 class="span12"
         />
@@ -90,7 +89,6 @@
                 type="Catalog"
                 label="COM_PRJ_FORM_PROJECT_CATALOG_LABEL"
                 description="COM_PRJ_FORM_PROJECT_CATALOG_DESC"
-                required="true"
                 filter="integer"
                 class="span12"
         />

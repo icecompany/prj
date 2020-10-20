@@ -6,8 +6,16 @@ class PrjViewProject extends HtmlView {
     protected $item, $form, $script;
 
     public function display($tmp = null) {
-        $this->form = $this->get('Form');
         $this->item = $this->get('Item');
+        $this->form = $this->get('Form');
+        if ($this->item->id === null) {
+            $this->form->removeField('priceID');
+            $this->form->removeField('catalogID');
+        }
+        else {
+            $this->form->setFieldAttribute('priceID', 'required', true);
+            $this->form->setFieldAttribute('catalogID', 'required', true);
+        }
         $this->script = $this->get('Script');
 
         $this->addToolbar();
