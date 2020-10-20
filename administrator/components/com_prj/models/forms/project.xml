@@ -32,7 +32,7 @@
         />
         <field
                 name="managerID"
-                type="Manager"
+                type="Director"
                 class="span12"
                 label="COM_PRJ_FORM_PROJECT_MANAGER_LABEL"
                 description="COM_PRJ_FORM_PROJECT_MANAGER_DESC"

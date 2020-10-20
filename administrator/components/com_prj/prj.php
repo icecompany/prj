@@ -22,6 +22,7 @@ if (!Factory::getUser()->authorise('core.manage', 'com_prj'))
 // Require the helper
 require_once JPATH_COMPONENT_ADMINISTRATOR . '/helpers/prj.php';
 require_once JPATH_ADMINISTRATOR . '/components/com_scheduler/helpers/scheduler.php';
+require_once JPATH_ADMINISTRATOR . '/components/com_mkv/helpers/mkv.php';
 // Execute the task
 $controller = BaseController::getInstance('prj');
 $controller->execute(Factory::getApplication()->input->get('task'));
