@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
+	<fieldset name="default" label="COM_PRJ_SETTINGS_DEFAULT" description="COM_PRJ_SETTINGS_DEFAULT_DESC">
+		<field
+				name="parent_group"
+				type="usergroup"
+				label="COM_PRJ_SETTINGS_DEFAULT_GROUP_PARENT_LABEL"
+				description="COM_PRJ_SETTINGS_DEFAULT_GROUP_PARENT_DESC"
+				required="true"
+				component="com_prj"
+				section="component"
+		/>
+	</fieldset>
 	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL" description="JCONFIG_PERMISSIONS_DESC">
 		<field name="rules"
 			   type="rules"

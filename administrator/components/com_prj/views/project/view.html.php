@@ -11,10 +11,12 @@ class PrjViewProject extends HtmlView {
         if ($this->item->id === null) {
             $this->form->removeField('priceID');
             $this->form->removeField('catalogID');
+            $this->form->removeField('groupID');
         }
         else {
-            $this->form->setFieldAttribute('priceID', 'required', true);
-            $this->form->setFieldAttribute('catalogID', 'required', true);
+            $this->form->setFieldAttribute('priceID', 'readonly', true);
+            $this->form->setFieldAttribute('catalogID', 'readonly', true);
+            $this->form->setFieldAttribute('groupID', 'disabled', true);
         }
         $this->script = $this->get('Script');
 

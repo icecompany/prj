@@ -25,6 +25,20 @@ class PrjHelper
         JHtmlSidebar::addFilter(JText::sprintf("COM_MKV_FILTER_SELECT_ACTIVE_PROJECT"), "set_active_project", JHtml::_("select.options", self::getAvailableProjects(), "value", "text", self::getActiveProject()));
     }
 
+    /**
+     * Возвращает ID последней созданной группы пользователей
+     * @since 2.0.3
+     * @return int ID Группы
+     */
+    public static function getLastUserGroupID(): int
+    {
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select("max(id)")
+            ->from("#__usergroups");
+        return $db->setQuery($query)->loadResult();
+    }
+
     public function getAvailableProjects()
     {
         $userGroups = implode(', ', JFactory::getUser()->groups);

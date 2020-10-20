@@ -20,16 +20,31 @@ class PrjModelProject extends AdminModel {
                 return false;
             }
             $data['priceID'] = $s1;
-            //Создание прайса для проекта
+            //Создание каталога стендов для проекта
             $s2 = $this->createSandCatalog($data['title']);
             if ($s2 === 0) {
                 $app->enqueueMessage(JText::sprintf('COM_PRJ_ERROR_CREATE_CATALOG', JFactory::getDbo()->getErrorMsg()), 'error');
                 return false;
             }
             $data['catalogID'] = $s2;
+            //Создание группы пользователей для проекта
+            $s3 = $this->createUserGroup($data['title']);
+            if (!$s3) {
+                $app->enqueueMessage(JText::sprintf('COM_PRJ_ERROR_CREATE_USER_GROUP'), 'error');
+                return false;
+            }
+            $data['groupID'] = PrjHelper::getLastUserGroupID();
         }
 
         return parent::save($data);
+    }
+
+    private function createUserGroup(string $title): bool
+    {
+        $parent_group = PrjHelper::getConfig('parent_group', 40);
+        JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . "/components/com_users/models", 'UsersModel');
+        $model = JModelLegacy::getInstance('Group', 'UsersModel');
+        return $model->save(['id' => 0, 'title' => $title, 'parent_id' => $parent_group]);
     }
 
     private function createPrice(string $title): int
