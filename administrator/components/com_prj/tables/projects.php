@@ -15,6 +15,7 @@ class TablePrjProjects extends Table
     var $date_start = null;
     var $date_end = null;
     var $prefix = null;
+    var $is_archive = null;
 	public function __construct(JDatabaseDriver $db)
 	{
 		parent::__construct('#__mkv_projects', 'id', $db);

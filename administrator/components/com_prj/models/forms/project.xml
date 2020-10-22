@@ -118,5 +118,18 @@
             <option value="0">JNO</option>
             <option value="1">JYES</option>
         </field>
+        <field
+                name="is_archive"
+                type="radio"
+                required="true"
+                label="COM_PRJ_FORM_PROJECT_IS_ARCHIVE_LABEL"
+                description="COM_PRJ_FORM_PROJECT_IS_ARCHIVE_DESC"
+                filter="integer"
+                class="btn-group btn-group-yesno"
+                default="1"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
     </fieldset>
 </form>
