@@ -37,6 +37,9 @@ class PrjModelProjects extends ListModel
         /* Сортировка */
         $orderCol = $this->state->get('list.ordering');
         $orderDirn = $this->state->get('list.direction');
+        if ($orderCol === 'status') {
+            $orderCol = 'p.date_start';
+        }
         //Ограничение длины списка
         $limit = (!$this->export) ? $this->getState('list.limit') : 0;
 
@@ -109,7 +112,7 @@ class PrjModelProjects extends ListModel
     }
 
     /* Сортировка по умолчанию */
-    protected function populateState($ordering = 'status', $direction = 'asc')
+    protected function populateState($ordering = 'status', $direction = 'DESC')
     {
         $search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
         $this->setState('filter.search', $search);
@@ -117,7 +120,7 @@ class PrjModelProjects extends ListModel
 
         $refresh = JFactory::getApplication()->input->getBool('refresh', false);
         if ($refresh) {
-            $current = JUri::getInstance(self::getCurrentUrl());
+            $current = JUri::getInstance(PrjHelper::getCurrentUrl());
             $current->delVar('refresh');
             JFactory::getApplication()->redirect($current);
         }
