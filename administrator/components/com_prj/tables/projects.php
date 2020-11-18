@@ -6,6 +6,7 @@ defined('_JEXEC') or die;
 class TablePrjProjects extends Table
 {
     var $id = null;
+    var $familyID = null;
     var $title = null;
     var $title_en = null;
     var $managerID = null;

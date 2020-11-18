@@ -104,7 +104,7 @@ class PrjModelProject extends AdminModel {
     {
         $all = get_class_vars($table);
         unset($all['_errors']);
-        $nulls = ['title_en', 'prefix', 'catalogID']; //Поля, которые NULL
+        $nulls = ['title_en', 'prefix', 'catalogID', 'familyID']; //Поля, которые NULL
         foreach ($all as $field => $v) {
             if (empty($field)) continue;
             if (in_array($field, $nulls)) {
