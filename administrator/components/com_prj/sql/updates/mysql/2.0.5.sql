@@ -8,5 +8,5 @@ create table `#__mkv_project_families`
 alter table `#__mkv_projects`
     add familyID smallint unsigned null default null comment 'Семейство проектов' after id,
     add constraint `#__mkv_projects_#__mkv_project_families_familyID_id_fk` foreign key (familyID)
-        references  `#__mkv_project_families` (id) on update cascade on delete cascade;
+        references  `#__mkv_project_families` (id) on update cascade on delete restrict;
 

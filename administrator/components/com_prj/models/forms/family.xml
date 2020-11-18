@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_prj/models/rules">
+    <fieldset name="general">
+        <field
+                name="title"
+                type="text"
+                label="COM_PRJ_FORM_PROJECT_TITLE_LABEL"
+                description="COM_PRJ_FORM_FAMILY_TITLE_DESC"
+                hint="COM_PRJ_FORM_FAMILY_TITLE_HINT"
+                autocomplete="off"
+                required="true"
+                class="span12"
+        />
+        <field
+                name="id"
+                type="hidden"
+        />
+    </fieldset>
+</form>

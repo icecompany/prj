@@ -9,6 +9,7 @@ class PrjHelper
 	{
 		HTMLHelper::_('sidebar.addEntry', JText::sprintf('COM_PRJ_MENU_PROJECTS'), 'index.php?option=com_prj&amp;view=projects', $vName === 'projects');
 		HTMLHelper::_('sidebar.addEntry', JText::sprintf('COM_PRJ_MENU_THEMATICS'), 'index.php?option=com_prj&amp;view=thematics', $vName === 'thematics');
+		HTMLHelper::_('sidebar.addEntry', JText::sprintf('COM_PRJ_MENU_FAMILIES'), 'index.php?option=com_prj&amp;view=families', $vName === 'families');
 	}
 
     public static function addNotifies()

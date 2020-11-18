@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_PRJ_MENU_FAMILIES">
+        <message>
+            <![CDATA[COM_PRJ_MENU_FAMILIES_DESC]]>
+		</message>
+    </layout>
+</metadata>
