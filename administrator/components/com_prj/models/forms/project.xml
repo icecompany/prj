@@ -6,6 +6,15 @@
                 type="hidden"
         />
         <field
+                name="familyID"
+                type="Family"
+                label="COM_PRJ_FORM_PROJECT_FAMILY_LABEL"
+                description="COM_PRJ_FORM_PROJECT_FAMILY_DESC"
+                class="span12"
+                >
+            <option value=""></option>
+        </field>
+        <field
                 name="title"
                 type="text"
                 label="COM_PRJ_FORM_PROJECT_TITLE_LABEL"
