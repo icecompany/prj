@@ -12,6 +12,36 @@ class PrjHelper
 		HTMLHelper::_('sidebar.addEntry', JText::sprintf('COM_PRJ_MENU_FAMILIES'), 'index.php?option=com_prj&amp;view=families', $vName === 'families');
 	}
 
+    /**
+     * Возвращает ID прерыдущего в семействе проекта
+     * @param int $currentID ID текущего проекта
+     * @since 2.0.6
+     */
+    public static function getPreviousProject(int $currentID = 0)
+    {
+        if ($currentID === 0) {
+            $currentID = self::getActiveProject();
+            if (!is_numeric($currentID)) return false;
+        }
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query
+            ->select("id, familyID, date_start")
+            ->from("#__mkv_projects")
+            ->where("id = {$db->q($currentID)}");
+        $current = $db->setQuery($query)->loadAssoc();
+        if (!is_numeric($current['familyID'])) return false;
+
+        $query = $db->getQuery(true);
+        $query
+            ->select("id")
+            ->from("#__mkv_projects")
+            ->where("familyID = {$db->q($current['familyID'])}")
+            ->where("date_start < {$db->q($current['date_start'])}")
+            ->order("date_start desc");
+        return $db->setQuery($query, 0, 1)->loadResult() ?? false;
+	}
+
     public static function addNotifies()
     {
         $cnt = SchedulerHelper::getNotifiesCount();
