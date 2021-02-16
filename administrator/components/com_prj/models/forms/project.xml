@@ -140,5 +140,21 @@
             <option value="0">JNO</option>
             <option value="1">JYES</option>
         </field>
+        <field
+                name="course_usd"
+                type="text"
+                label="COM_PRJ_FORM_PROJECT_COURSE_USD_LABEL"
+                description="COM_PRJ_FORM_PROJECT_COURSE_USD_DESC"
+                filter="float"
+                class="span12"
+        />
+        <field
+                name="course_eur"
+                type="text"
+                label="COM_PRJ_FORM_PROJECT_COURSE_EUR_LABEL"
+                description="COM_PRJ_FORM_PROJECT_COURSE_EUR_DESC"
+                filter="float"
+                class="span12"
+        />
     </fieldset>
 </form>
