@@ -40,6 +40,16 @@
                 class="span12"
         />
         <field
+                name="title_short"
+                type="text"
+                label="COM_PRJ_FORM_PROJECT_TITLE_SHORT_LABEL"
+                description="COM_PRJ_FORM_PROJECT_TITLE_SHORT_DESC"
+                hint="COM_PRJ_FORM_PROJECT_TITLE_SHORT_HINT"
+                autocomplete="off"
+                maxlength="255"
+                class="span12"
+        />
+        <field
                 name="managerID"
                 type="Director"
                 class="span12"
